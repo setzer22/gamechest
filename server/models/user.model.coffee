@@ -2,7 +2,7 @@ mongoose = require 'mongoose'
 Schema = mongoose.Schema
 
 module.exports = () ->
-    usersSchema = new Schema({
+    userSchema = new Schema({
         name: {type: String, required: true},
         password: {type: String, required: true},
         game_list: [{game_id: {type: Schema.Types.ObjectId, ref: 'Game', required: true},
@@ -13,3 +13,4 @@ module.exports = () ->
                      times: [{name: {type: String, required: true},
                               time: {type: String, required: true}
                               year: {type: Number, required: true, min: 0}}]}]})
+    mongoose.model('User', userSchema, 'users');
