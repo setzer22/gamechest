@@ -1,26 +1,33 @@
 mongoose = require 'mongoose'
 async = require 'async'
 bcrypt = require 'bcrypt'
-jwt = require 'jsonwebtoken'
+jwt_secret = require 'jsonwebtoken'
+express_jwt = require 'express-jwt';
 crudRouterMaker = require '../helpers/crud_maker'
 
 secret = require('../config').secret
 router = require('express').Router()
 module.exports = router
 
-Usuario = mongoose.model('Usuario')
+User = mongoose.model('User')
+Game = mongoose.model('Game')
 
 # Middleware check if token-user is admin
 router.use '*',
-    express_jwt({secret: jwt_secret, requestProperty: 'Usuario'}),
+    express_jwt({secret: secret, requestProperty: 'User'}),
     (req, res, next) ->
-      User.findOne { nombre: req.Usuario.nombre }, (err, user) ->
-        if (err) res.status(500).send(err);
-        if (!user) res.status(401).send('Error en la autentificacion:')
+      User.findOne { name: req.User.name }, (err, user) ->
+        if err
+          res.status(500).send(err)
+        if not user
+          res.status(401).send('Error en la autentificacion:')
         else
-          bcrypt.compare user.password, req.Usuario.password, (err, eq) ->
+          bcrypt.compare user.password, req.User.password, (err, eq) ->
             if not eq
-              res.status(500).json({token: null, err: "Error en la autentificacion:"})
+              console.log(eq);
+              console.log(user.password);
+              console.log(req.User.password);
+              res.status(500).json({"Error en la autentificacion:"})
             else 
               if (user.isAdmin) 
                 #SUCCESS
@@ -29,8 +36,8 @@ router.use '*',
               else res.status(401).send('Ets un fill de puta i no ets admin, PUTO HACKER A TU CASA A FREGAR!!')
 
 
-router.use '/users', crudRouterMaker(User, 'Game');
-router.use '/games', crudRouterMaker(Game);
+router.use '/users', crudRouterMaker(User, 'Game')
+router.use '/games', crudRouterMaker(Game)
 
 # Encriptar Guia sencilla i interactiva para mongos
 # bcrypt.hash(password,8, function(err, hashed_password))
