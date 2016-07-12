@@ -33,6 +33,9 @@ app.use '/authenticate', auth_router
 register_router = require('./routers/register.router.coffee')
 app.use '/register', register_router
 
+admin_router = require('./routers/admin.router.coffee')
+app.use '/admin', admin_router
+
 http.createServer(app).listen(8080)
 
 

@@ -1,7 +1,6 @@
 mongoose = require 'mongoose'
 async = require 'async'
 bcrypt = require 'bcrypt'
-jwt = require 'jsonwebtoken'
 
 secret = require('../config').secret
 token_timeout_seconds = require('../config').token_timeout_seconds
