@@ -13,6 +13,7 @@ db_ok = false
 db.on('error', () -> console.log 'Error connecting to DB')
 db.once('open', () -> db_ok = true)
 
+require('./models').initialize()
 
 app = express()
 
@@ -23,6 +24,12 @@ app.use (req, res, next) ->
         next()
 
 app.use bodyParser.json()
+
+auth_router = require('./routers/authenticate.router.coffee')
+app.use '/authenticate', register_router
+
+register_router = require('./routers/register.router.coffee')
+app.use '/register', register_router
 
 http.createServer(app).listen(8080)
 

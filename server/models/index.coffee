@@ -1,4 +1,4 @@
-models = ['./users.model', './game.model']
+models = ['./user.model', './game.model']
 
 exports.initialize = () ->
     models.forEach (model) ->
