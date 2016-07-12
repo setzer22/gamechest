@@ -11,7 +11,9 @@ mongoose.connect DB_URI
 db = mongoose.connection
 db_ok = false
 db.on('error', () -> console.log 'Error connecting to DB')
-db.once('open', () -> db_ok = true)
+db.once 'open', () ->
+    db_ok = true
+    #require('./fill_db.coffee')() <-- UNCOMMENT TO FILL DB. RUN ONLY ONCE
 
 require('./models').initialize()
 
@@ -26,7 +28,7 @@ app.use (req, res, next) ->
 app.use bodyParser.json()
 
 auth_router = require('./routers/authenticate.router.coffee')
-app.use '/authenticate', register_router
+app.use '/authenticate', auth_router
 
 register_router = require('./routers/register.router.coffee')
 app.use '/register', register_router
