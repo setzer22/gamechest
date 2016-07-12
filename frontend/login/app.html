@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<link rel="stylesheet" type="text/css" href="./app.css"></link>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="extras.js"></script>
+	<script src="app.js"></script>
+	<meta charset="UTF-8">
+    <title>Formulario</title>
+</head>
+
+<body ng-app="FormsApp" ng-controller="FormsController">
+	<div class="container">
+	    <div class="row" style="margin-top:20px">
+		    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<form role="form" name="login_form">
+					<fieldset>
+						<h2>Iniciar Sesión</h2>
+						<hr class="colorgraph">
+
+						<!--Formulario-->
+						<div> 
+                            <!--Email-->
+                            <input class="form-control input-lg" placeholder="Correo Electrónico" role="form" ng-model="correo" name="myEmail" required type="email"></input> </div>
+						<div>
+                            <!--Password-->
+                            <input required class="form-control input-lg" placeholder="Contraseña" role="form" ng-model="contrasena" name=myPassword ></input>
+						</div>
+
+						<hr class="colorgraph">
+
+                        <h5 class="alert alert-danger" ng-hide="login_form.myEmail.$valid || login_form.myEmail.$pristine">Invalid email</h5>
+                        <h5 class="alert alert-danger" ng-hide="login_form.myPassword.$valid || login_form.myPassword.$pristine">Invalid Password</h5>
+
+						<!--Botones-->
+						<div class="row"> 
+                            <!--Botón acceder-->
+                            <button ng-disabled="login_form.$invalid" class="btn btn-lg btn-success btn-block" ng-click="login_status = users.includes({mail: myEmail, password: myPassword}) ? 'ok' : 'err'" value="Acceder">Acceder</button>
+						</div>
+
+                        <h3 ng-show="login_status === 'ok'">Logged in!</h6>
+                        <h3 ng-show="login_status === 'err'">Login error!</h6>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
