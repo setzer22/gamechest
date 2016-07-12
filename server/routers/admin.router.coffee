@@ -19,21 +19,24 @@ router.use '*',
       User.findOne { name: req.User.name }, (err, user) ->
         if err
           res.status(500).send(err)
-        if not user
+        else if not user
           res.status(401).send('Error en la autentificacion:')
-        else
-          bcrypt.compare user.password, req.User.password, (err, eq) ->
-            if not eq
-              console.log(eq);
-              console.log(user.password);
-              console.log(req.User.password);
-              res.status(500).json({"Error en la autentificacion:"})
-            else 
-              if (user.isAdmin) 
-                #SUCCESS
-                next()
-              # Mensaje de amor
-              else res.status(401).send('Ets un fill de puta i no ets admin, PUTO HACKER A TU CASA A FREGAR!!')
+        else if not user.isAdmin
+            # Mensaje de amor
+            res.status(401).send('Ets un fill de puta i no ets admin, PUTO HACKER A TU CASA A FREGAR!!')
+        else next()
+
+         # bcrypt.compare user.password, req.User.password, (err, eq) ->
+         #   if not eq
+         #     console.log(eq)
+         #     console.log(user.password)
+         #     console.log(req.User.password)
+         #     res.status(500).json({"Error en la autentificacion:"})
+         #   else
+         #     if (user.isAdmin)
+         #       #SUCCESS
+         #       next()
+         #     else 
 
 
 router.use '/users', crudRouterMaker(User, 'Game')
