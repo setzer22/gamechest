@@ -9,4 +9,13 @@ module.exports = router
 
 Usuario = mongoose.model('Usuario')
 
-#TODO: ALL
+#Check User
+router.use'*',
+    express_jwt({secret: jwt_secret, requestProperty: 'Usuario'}),
+    (req, res, next) ->     
+      User.findOne { nombre: req.Usuario.nombre }, (err, user) ->
+        if (err) res.status(500).send(err)
+        if (user.name !== req.Usuario.name) res.status(401).send('Error en la autentificacion:')
+        else
+          #SUCCESS
+          next()
