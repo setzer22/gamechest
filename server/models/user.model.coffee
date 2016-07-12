@@ -5,6 +5,7 @@ module.exports = () ->
     userSchema = new Schema({
         name: {type: String, required: true},
         password: {type: String, required: true},
+        isAdmin: {type: Boolean, default: false},
         game_list: [{game_id: {type: Schema.Types.ObjectId, ref: 'Game', required: true},
                      state: {type: String, enum: ['Completado', 'Jugando', 'Quiero Jugarlo'], required: true}
                      score: {type: Number, required: false, min: 0, max: 10}
