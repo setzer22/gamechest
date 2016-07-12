@@ -10,4 +10,5 @@ module.exports = () ->
         company: {type: String} #TODO reference to companyScheme
         developer: {type: String} #TODO reference to developerScheme
         composer: {type:String} #TODO reference to composerScheme
-    mongoose.model('Game', gameSchema, 'games');
+    })
+    mongoose.model('Game', gameSchema, 'games')
