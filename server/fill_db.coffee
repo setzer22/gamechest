@@ -15,7 +15,7 @@ module.exports = () ->
         },
         {
             name: "ET",
-            year: "1000 A.C.",
+            year: "1000",
             platforms: ["Wii"],
             genre: "Shit",
             company: "Squaresoft",
