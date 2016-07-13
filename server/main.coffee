@@ -5,6 +5,7 @@ async = require 'async'
 express = require 'express'
 bodyParser = require 'body-parser'
 http = require 'http'
+cors = require 'cors'
 
 DB_URI = "mongodb://localhost:27017/gamechest"
 mongoose.connect DB_URI
@@ -27,6 +28,8 @@ app.use (req, res, next) ->
 
 app.use bodyParser.json()
 
+app.use cors()
+
 auth_router = require('./routers/authenticate.router.coffee')
 app.use '/authenticate', auth_router
 
@@ -35,6 +38,19 @@ app.use '/register', register_router
 
 admin_router = require('./routers/admin.router.coffee')
 app.use '/admin', admin_router
+
+
+path = require 'path'
+client_path = path.resolve(__dirname, '..', 'frontend')
+
+app.use express.static(client_path + '/views')
+app.use express.static(client_path + '/')
+
+app.get '*', (req, res) ->
+    res.redirect '/index.html'
+
+app.all '*', (req, res) ->
+    res.status(404).send("<h1>Error 404</h1><br/><h3>Go back, there's nothing here. Seriously.</h3>")
 
 http.createServer(app).listen(8080)
 
