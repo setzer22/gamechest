@@ -12,12 +12,6 @@ angular.module('GameChestApp').config(['$stateProvider', '$urlRouterProvider', '
         templateUrl: '/views/partials/login.html',
         url: '/login',
         controller: 'LoginCtrl'
-    })
-    .state('register', {
-        parent: 'layout',
-        templateUrl: '/views/partials/register.html',
-        url: '/register',
-        controller: 'RegisterCtrl'
     });
 
     // Cuando la ruta a la que acceda el usuario no sea ninguna

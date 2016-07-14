@@ -7,10 +7,9 @@ var LoginCtrl = function($scope, LoginService, ToastService, $state) {
     $scope.login = function() {
         LoginService.login($scope.user)
             .then(function() {
-                // Si todo correcto, vamos al estado tareas
+                ToastService.showToast("Bienvenido " + $scope.user.name + ", te has logueado correctamente");
                 $state.go('tareas');
             }, function(err) {
-                // Nuevamente discrimanos según el estado de la respuesta
                 if (err.status === 401) ToastService.showToast("Contraseña incorrecta");
                 else if (err.status === 404) ToastService.showToast("El usuario no existe");
                 else if (err.status === 500) ToastService.showToast("Ha occurido un error, vuelvelo a intentar");
@@ -18,8 +17,15 @@ var LoginCtrl = function($scope, LoginService, ToastService, $state) {
     };
 
     $scope.register = function() {
-        $state.go('register')
-    }
+        LoginService.register($scope.user)
+            .then(function() {
+                ToastService.showToast("Bienvenido " + $scope.user.name + ", te has registrado correctamente");
+            }, function(err) {
+                console.log(err);
+                if (err.code === 11000) ToastService.showToast("El usuario ya existe");
+                else if (err.status === 500) ToastService.showToast("Ha occurido un error, vuelvelo a intentar");
+            });
+   };
 };
 
 

@@ -10,7 +10,7 @@ var LayoutCtrl = function($scope, $state, LoginService, TareasService) {
         $state.go('login');
     };
 
-    $scope.showLogout = function() { return !$state.includes('login'); }
+    $scope.showLogout = function() { return LoginService.isLoggedIn(); }
 };
 
 
