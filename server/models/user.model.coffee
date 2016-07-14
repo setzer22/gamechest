@@ -12,6 +12,7 @@ module.exports = () ->
             score: {type: Number, required: false, min: 0, max: 10},
             platform: {type: String, required: true},
             first_completion_year: {type: Number},
+            _id: false,
             times: [{
                 name: {type: String, required: true},
                 time: {type: String, required: true},

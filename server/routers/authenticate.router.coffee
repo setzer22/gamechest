@@ -29,4 +29,3 @@ router.post '/', (req, res, next) ->
                 else
                     token = jwt.sign user.toObject(), secret, {expiresIn: token_timeout_seconds}
                     res.json {token: token, err: null}
-

@@ -40,7 +40,7 @@ admin_router = require('./routers/admin.router.coffee')
 app.use '/admin', admin_router
 
 user_router = require('./routers/user.router.coffee')
-app.use '/user', admin_router
+app.use '/user', user_router
 
 path = require 'path'
 client_path = path.resolve(__dirname, '..', 'frontend')
