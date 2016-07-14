@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="es">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <!--<script src="extras.js"></script> -->
+	<script src="register.js"></script>
+	<meta charset="UTF-8">
+    <title>Registro</title>
+</head>
+
+<body ng-app="GameChestApp" ng-controller="FormsController">
+	<div class="container">
+	    <div class="row" style="margin-top:20px">
+		    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+				<form role="form" name="form">
+					<fieldset>
+						<h2>Nuevo usuario</h2>
+                        <br/>
+
+						<!--Formulario-->
+						<div> 
+                            <input class="form-control input-lg" placeholder="Nombre de usuario" role="form" ng-model="name" name="name" required></input> 
+                        </div>
+                        <br/>
+                        <div>
+                            <input required class="form-control input-lg" placeholder="Contraseña" type="password" role="form" ng-model="password" name=password ></input> 
+                        </div>
+
+                        <br/>
+
+                        <h5 class="alert alert-danger" ng-hide="form.name.$valid || form.name.$pristine">El campo: 'Nombre de usuario' es obligatorio.</h5>
+                        <h5 class="alert alert-danger" ng-hide="form.password.$valid || form.password.$pristine">El campo: 'Contraseña' es obligatorio.</h5>
+
+						<!--Botones-->
+                        <div class="row"> 
+                            <!--Botón registrar-->
+                            <div class="col-xs-12">
+                                <button ng-disabled="form.$invalid" class="btn btn-lg btn-info btn-block" ng-click="register()" value="Crear nuevo usuario">Crear Nuevo Usuario</button>
+                            </div>
+                        </div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
