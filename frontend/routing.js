@@ -3,7 +3,7 @@ angular.module('GameChestApp').config(['$stateProvider', '$urlRouterProvider', '
 
     $stateProvider
     .state('layout', {
-        abstract: true,
+        abstract: false,
         templateUrl: '/views/partials/layout.html',
         controller: 'LayoutCtrl'
     })
@@ -34,12 +34,7 @@ angular.module('GameChestApp').config(['$stateProvider', '$urlRouterProvider', '
 
 // Un .run se ejecuta cuando la aplicación de angular se ha configurado y ya está corriendo
 angular.module('GameChestApp').run(['$rootScope', 'LoginService', '$state', function($rootScope, LoginService, $state) {
-    // Aquí le decimos que cuando se empiece a cambiar de estado de ui-router
-    // Nos compruebe que el usuario está logueado, y si no lo está y el estado requiere
-    // autenticación (es diferente de login) entonces redireccionamos al estado login
-    // Esto hace que si el usuario no está logueado se le redireccione al login
-    // cuando por ejemplo acceda a /tareas
-    $rootScope.$on("$stateChangeStart", function(event, next) {
+   $rootScope.$on("$stateChangeStart", function(event, next) {
         if (!LoginService.isLoggedIn() && next.name !== "login") {
             event.preventDefault();
             $state.go("login");
