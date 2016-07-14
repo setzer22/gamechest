@@ -9,7 +9,7 @@ var LoginCtrl = function($scope, LoginService, ToastService, $state) {
             .then(function() {
                 console.log("Login");
                 ToastService.showToast("Bienvenido " + $scope.user.name + ", te has logueado correctamente");
-                $state.go('tareas');
+                $state.go('userhome');
             }, function(err) {
                 if (err.status === 401) ToastService.showToast("Contraseña incorrecta");
                 else if (err.status === 404) ToastService.showToast("El usuario no existe");
