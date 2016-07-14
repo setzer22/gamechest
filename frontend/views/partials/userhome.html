@@ -1,0 +1,57 @@
+<md-content>
+<div ui-view>
+  <div class="container">
+      <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form role="form" name="form">
+          <fieldset>
+                        <br/>
+
+                <div>         
+                    <!--Buscador Juegos Usuario-->
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="input-group ">
+                            <input type="text" class="form-control" ng-model="buscador" placeholder="Buscar Juego">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-info">
+                                <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>     
+                        
+                        
+            <!--Formulario-->
+            <div> 
+                            <input class="form-control input-lg" placeholder="Nombre de usuario" role="form" ng-model="user.name" name="name" required></input> 
+                        </div>
+                        <br/>
+            <div>
+                            <input required class="form-control input-lg" placeholder="Contraseña" role="form" type="password" ng-model="user.password" name="password" ></input>
+            </div>
+
+                        <br/>
+
+                        <h5 class="alert alert-danger" ng-hide="form.name.$valid || form.name.$pristine">Introduce tu nombre de usuario</h5>
+                        <h5 class="alert alert-danger" ng-hide="form.password.$valid || form.password.$pristine">Introduce tu contraseña</h5>
+
+            <!--Botones-->
+                        <div class="row"> 
+                            <!--Botón acceder-->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <button ng-disabled="form.$invalid" class="btn btn-lg btn-success btn-block" ng-click="login()" value="Acceder">Acceder</button>
+                            </div>
+
+                            <!--Botón registrar-->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <button class="btn btn-lg btn-info btn-block" ng-click="register()" value="Registrarse">Registrarse</button>
+                            </div>
+                        </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</md-content>
