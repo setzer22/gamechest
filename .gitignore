@@ -1,4 +1,4 @@
 server/config.coffee
-server/node_modules/
+node_modules/
 *.swp
 *.swo
