@@ -2,12 +2,28 @@
 <div ui-view>
   <div class="container">
       <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <div class="col">
         <form role="form" name="form">
           <fieldset>
                         <br/>
-
-                <div>         
+                        
+             <div class="column">
+                <div class="row-md-12">
+                      <button class="btn btn-lg btn-warning pull-right" ng-click="addGame()" value="Acceder">
+                      <span class="glyphicon glyphicon-plus"></span>  Añadir Juego
+                      </button>
+                </div>     
+                <br><br><br>
+                <div class="row-md-12">  
+                  <ul class="nav nav-tabs">
+                    <li role="presentation" class="active"><a href="#">Jugando</a></li>
+                    <li role="presentation"><a href="#">Completado</a></li>
+                    <li role="presentation"><a href="#">Quiero Jugarlo</a></li>
+                    <li role="presentation"><a href="#">No clasificado</a></li>
+                  </ul>
+                </div>  
+                <br>
+                <div class="row-md-12">         
                     <!--Buscador Juegos Usuario-->
                     <form class="navbar-form navbar-left" role="search">
                         <div class="input-group ">
@@ -19,35 +35,20 @@
                             </span>
                         </div>
                     </form>
-                </div>     
-                        
-                        
-            <!--Formulario-->
-            <div> 
-                            <input class="form-control input-lg" placeholder="Nombre de usuario" role="form" ng-model="user.name" name="name" required></input> 
-                        </div>
-                        <br/>
-            <div>
-                            <input required class="form-control input-lg" placeholder="Contraseña" role="form" type="password" ng-model="user.password" name="password" ></input>
-            </div>
+                </div>  
+                <br><br><br>
+              </div> 
+              
+              <!--Taula de Cards-->
+              <div class="card">
+  <img class="card-img-top" data-src="..." alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Button</a>
+  </div>
+</div>
 
-                        <br/>
-
-                        <h5 class="alert alert-danger" ng-hide="form.name.$valid || form.name.$pristine">Introduce tu nombre de usuario</h5>
-                        <h5 class="alert alert-danger" ng-hide="form.password.$valid || form.password.$pristine">Introduce tu contraseña</h5>
-
-            <!--Botones-->
-                        <div class="row"> 
-                            <!--Botón acceder-->
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <button ng-disabled="form.$invalid" class="btn btn-lg btn-success btn-block" ng-click="login()" value="Acceder">Acceder</button>
-                            </div>
-
-                            <!--Botón registrar-->
-                            <div class="col-xs-6 col-sm-6 col-md-6">
-                                <button class="btn btn-lg btn-info btn-block" ng-click="register()" value="Registrarse">Registrarse</button>
-                            </div>
-                        </div>
           </fieldset>
         </form>
       </div>

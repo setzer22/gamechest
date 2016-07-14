@@ -1,5 +1,5 @@
 var LayoutCtrl = function($scope, $state, LoginService, TareasService) {
-
+    
     $scope.logout = function() {
         LoginService.logout();
         TareasService.reset();
