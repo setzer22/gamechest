@@ -7,7 +7,8 @@
 // para guardar el token cuando autentiquemos un usuario
 LoginService = function($http, $q, $window, TareasService) {
     var SERVER_URL_AUTH = "http://localhost:8080/authenticate";
-    var SERVER_URL_USERS = "http://localhost:8080/register";
+    var SERVER_URL_REGISTER = "http://localhost:8080/register";
+    var SERVER_URL_USERINFO = "http://localhost:8080/users/";
 
     var user = null;
 
@@ -62,14 +63,17 @@ LoginService = function($http, $q, $window, TareasService) {
     }
 
     this.reloadUser = function() {
+        console.log('ReloadUser');
         var q = $q.defer();
 
         // Obtiene el usuario del servidor
-        $http.get(SERVER_URL_USERS)
+        $http.get(SERVER_URL_USERINFO)
             .then(
                 function(response) {
+                    console.log('Aha!');
                     // Y asignamos la variable local user a los datos obtenidos
-                    user = response.data;
+                    console.log(user);
+                    user = response.data.name;
                     q.resolve(user);
                 },
                 function(err) {
@@ -84,7 +88,7 @@ LoginService = function($http, $q, $window, TareasService) {
         var q = $q.defer();
 
         // Post a /usuarios con body = objeto del usuario
-        $http.post(SERVER_URL_USERS, user)
+        $http.post(SERVER_URL_REGISTER, user)
             .then(
                 function() {
                     q.resolve();

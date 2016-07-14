@@ -7,6 +7,7 @@ var LoginCtrl = function($scope, LoginService, ToastService, $state) {
     $scope.login = function() {
         LoginService.login($scope.user)
             .then(function() {
+                console.log("Login");
                 ToastService.showToast("Bienvenido " + $scope.user.name + ", te has logueado correctamente");
                 $state.go('tareas');
             }, function(err) {
@@ -19,6 +20,7 @@ var LoginCtrl = function($scope, LoginService, ToastService, $state) {
     $scope.register = function() {
         LoginService.register($scope.user)
             .then(function() {
+                console.log("Register");
                 ToastService.showToast("Bienvenido " + $scope.user.name + ", te has registrado correctamente");
             }, function(err) {
                 console.log(err);

@@ -1,10 +1,13 @@
 <md-content>
-    <md-toolbar class="md-tall" layout="row">
+    <md-toolbar layout="row" layout-align="center">
       <h1 class="md-toolbar-tools">
         GameChest  
       </h1>
+      <md-button class="button left">Mi panel</md-button>
       <md-button>About</md-button> 
       <md-button style="float:right" ng-click="logout()" ng-show="showLogout()">Logout</md-button>
     </md-toolbar>
 </md-content>
+
+{{LoginService.getUser()}}
 <div ui-view></div>
