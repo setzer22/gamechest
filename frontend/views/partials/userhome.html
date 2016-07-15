@@ -40,33 +40,42 @@
               </div> 
               
               <!--Taula de Mongojumbotron-->
+              <!--Heador Jumbotron-->
               <ol ng-repeat="game in games | filter: buscador" style="list-style-type:none">
                 <li>
-                  <div class="jumbotron" style="padding-top: 5pt; padding-bottom: 5pt;">
-                    <h2>{{game.name}}<h2>
+                  <div class="jumbotron" style="padding-top: 5pt; padding-bottom: 5pt; padding-right: 10pt; padding-left: 10pt;">
+                  
+                  
+                      <div class='row'>
+                        <div class='col-md-10'>
+                          <p style="font-size:180%;">{{game.name}}<p>
+                        </div>
+                        <div class='col-md-2'>
+                          <a class="btn btn-primary btn-lg pull-right"  href="#" role="button">
+                          <span class=" glyphicon glyphicon-floppy-disk"></span>  Guardar</a>
+                        </div>
+                      </div><br>
+                    
+
                       <!--Llista dels atributs-->
                       <ol ng-repeat="(attrib, val) in game" style="list-style-type:none">
                         <li>
                             <div class='row'>
                               <div class='col-md-2'>
-                                <p style="font-size:70%;">{{campNames[attrib]}}<p>
+                                <p style="font-size:140%;">{{campNames[attrib]}}<p>
                               </div>
                               <div class='col-md-10'>
-                                <input type="text" style="font-size:70%;"  class="form-control pull-right" ng-model="game[attrib]" placeholder={{campNames[attrib]}} required/>
+                                <input type="text" style="font-size:140%;"  class="form-control pull-right" ng-model="game[attrib]" placeholder={{campNames[attrib]}} required/>
                               </div>
                             </div>
                         </li>
-                      <ol>
-                      
-                    
-                    <!--<p>Es un juego de cosas</p>
-                    <p ng-hide="!show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet mauris dui, at rutrum lacus vestibulum at. Aliquam vitae ultrices eros. Ut id venenatis lacus. In tellus sem, tincidunt in malesuada non, dignissim ac risus. Praesent feugiat blandit quam non consectetur. Ut tristique nunc dolor, nec consequat neque consectetur eu. Nam imperdiet augue eget porta sagittis. Proin in lacinia massa. Nulla ac maximus lacus, sit amet pellentesque nulla. Mauris imperdiet massa eu dui consequat porta. Phasellus varius turpis id arcu dictum lobortis. Pellentesque velit ipsum, faucibus non massa feugiat, eleifend luctus magna. Morbi hendrerit, sapien quis aliquet rutrum, sapien arcu tempus turpis, dignissim fermentum quam purus in nisl. Pellentesque mi sem, suscipit tincidunt posuere imperdiet, commodo sed leo. Nulla mollis eleifend laoreet. Fusce vitae feugiat urna. 
-                    <p><a class="btn btn-primary btn-lg" ng-click="show = !show" href="#" role="button">Learn more</a></p>
-                  -->
+                      </ol>
+                     
+                  
                   
                   </div>
                 </li>
-              <ol>
+              </ol>
 
           </fieldset>
         </form>
