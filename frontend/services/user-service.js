@@ -1,5 +1,4 @@
 UserService = function($http, $q, $window) {
-    console.log("hmmm");
     var get = function(method) {
         return function () {
             console.log("get for "+method);
@@ -16,6 +15,7 @@ UserService = function($http, $q, $window) {
     this.playedGames = get('played_games');
     this.noPlayedGames = get('no_played_games');
     this.allGames = get('all_games');
+    this.game_list = get('game_list');
 }
 
 angular.module('GameChestApp').service('UserService', ['$http', '$q', '$window', UserService]);

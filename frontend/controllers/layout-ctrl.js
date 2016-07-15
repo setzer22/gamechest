@@ -9,6 +9,10 @@ var LayoutCtrl = function($scope, $state, LoginService, TareasService) {
         TareasService.reset();
         $state.go('login');
     };
+    
+    $scope.goUser = function() {
+        $state.go('userhome');
+    };
 
     $scope.addGame = function () {
         $state.go('gamelist');

@@ -8,9 +8,9 @@ module.exports = () ->
         isAdmin: {type: Boolean, default: false},
         game_list: [{
             game_id: {type: Schema.Types.ObjectId, ref: 'Game', required: true},
-            state: {type: String, enum: ['Completado', 'Jugando', 'Quiero Jugarlo', 'No Clasificado'], required: true, default : 'No Clasificado'},
+            state: {type: String, enum: ['Completado', 'Jugando', 'Quiero Jugarlo', 'No Clasificado'],  default : 'No Clasificado'},
             score: {type: Number, required: false, min: 0, max: 10},
-            platform: {type: String, required: true, default: ""},
+            platform: {type: String, default: ""},
             first_completion_year: {type: Number},
             _id: false,
             times: [{
