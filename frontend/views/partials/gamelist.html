@@ -63,14 +63,23 @@ $(".dropdown-menu li a").click(function(){
       <ol ng-repeat="game in games | filter: buscador" style="list-style-type:none">
         <li>
           <div class="jumbotron" style="padding-top: 5pt; padding-bottom: 5pt;">
-            <h2>{{game.name}}<h2>
+              <div class="row">
+                  <div class="col-md-9"><h2>{{game.name}}</h2></div>
+                  <div class="col-md-3">
+                      <button class="btn btn-lg btn-block" ng-click="add_game($index)">
+                          <span class="glyphicon glyphicon-plus"></span>
+                          Añadir a mi Lista
+                      </button>
+                  </div>
+              </span>
+              <br/><br/>
 
             <hr class="m-y-2"/>
               <table class="table table-hover" >
                 <tbody>
                     <tr ng-repeat="(k, v) in game">
-                        <td ng-hide="k == 'name'" class="btn btn-info disabled" style="width: 150pt"> {{k}} </td>
-                        <td ng-hide="k == 'name'" style="width: 100%"> <p>{{v}}</p> </td>
+                        <td ng-hide="!valid_attrib(k)" class="btn btn-info disabled" style="width: 150pt"> {{k}} </td>
+                        <td ng-hide="!valid_attrib(k)" style="width: 100%"> <p>{{v}}</p> </td>
                     </tr>
                 </tbody>
               </table>

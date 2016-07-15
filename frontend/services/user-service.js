@@ -16,6 +16,21 @@ UserService = function($http, $q, $window) {
     this.playedGames = get('played_games');
     this.noPlayedGames = get('no_played_games');
     this.allGames = get('all_games');
+
+    this.add_game = function (body) {
+        q = $q.defer();
+        
+        $http.post("http://localhost:8080/user", body).then(
+            function (ok) {
+                q.resolve(ok);
+            },
+            function (err) {
+                q.resolve(err);
+            }
+        );
+
+        return q.promise;
+    }
 }
 
 angular.module('GameChestApp').service('UserService', ['$http', '$q', '$window', UserService]);

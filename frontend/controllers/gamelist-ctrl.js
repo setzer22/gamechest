@@ -22,6 +22,27 @@ var GameListCtrl = function($scope, UserService, $state) {
             function(err) {console.log(err)}
             );
 
+    $scope.valid_attrib = function(attrib_name) {
+        return attrib_name !== 'name' && 
+               attrib_name !== '_id' &&
+               attrib_name !== '__v';
+    }
+
+    $scope.add_game = function(index) {
+        game_id = $scope.games[index]._id;
+        UserService.add_game({game_id: game_id}).then(
+            function (ok) {
+                $state.go('userhome');
+            },
+            function (err) {
+                ToastService.showToast("Error al añadir juego. Profavor intentalo mas tarde");
+            }
+        );
+
+
+         
+    }
+
 
 };
 
