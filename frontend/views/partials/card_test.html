@@ -21,16 +21,27 @@
     <script src="/controllers/login-ctrl.js"></script>
     <script src="/controllers/register-ctrl.js"></script>
     <script src="/controllers/userhome-ctrl.js"></script>
-    <script src="/controllers/gamelist-ctrl.js"></script>
 
     <script src="/services/login-service.js"></script>
     <script src="/services/toast-service.js"></script>
     <script src="/services/tareas-service.js"></script>
     <script src="/services/auth-interceptor.js"></script>
 
+    <img src="card-image.png" class="md-card-image" alt="image caption">
+
     <title>GameChest - Your game checklist</title>
 </head>
-<body ui-view ng-app="GameChestApp" ng-cloak>
+
+<body >
+
+<div class="card">
+<img class="card-img-top" data-src="..." alt="Card image cap">
+<div class="card-block">
+<h4 class="card-title">Card title</h4>
+<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<a href="#" class="btn btn-primary">Button</a>
+</div>
+
 
 </body>
 </html>
