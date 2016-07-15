@@ -36,7 +36,6 @@ var UserHomeCtrl = function($scope, UserService, LoginService, ToastService, $st
         }
     );
       
-    $scope.modify();
       
 
 

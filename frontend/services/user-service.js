@@ -19,12 +19,16 @@ UserService = function($http, $q, $window) {
 
     this.add_game = function (body) {
         q = $q.defer();
+
+        console.log(body);
         
         $http.post("http://localhost:8080/user", body).then(
             function (ok) {
+                console.log(ok);
                 q.resolve(ok);
             },
             function (err) {
+                console.log(err);
                 q.resolve(err);
             }
         );

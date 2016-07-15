@@ -14,8 +14,6 @@ var GameListCtrl = function($scope, UserService, $state) {
     UserService.allGames().then(
             function(games) {
                 $scope.games = games.map(function(game) {
-                    delete game._id;
-                    delete game.__v;
                     return game;
                 });
             },
@@ -29,8 +27,10 @@ var GameListCtrl = function($scope, UserService, $state) {
     }
 
     $scope.add_game = function(index) {
-        game_id = $scope.games[index]._id;
-        UserService.add_game({game_id: game_id}).then(
+        id = $scope.games[index]._id;
+        console.log('id');
+        console.log($scope.games[index]);
+        UserService.add_game({game_id: id}).then(
             function (ok) {
                 $state.go('userhome');
             },
