@@ -1,30 +1,81 @@
+<script>
+console.log('wat')
+$(".dropdown-menu li a").click(function(){
+    console.log('wat')
+    $(this).parents(".btn-group").find('.selection').text($(this).text());
+    $(this).parents(".btn-group").find('.selection').val($(this).text());
+});
+</script>
+
 <div class="container">
     <div class="row" style="margin-top:20px">
-        <md-content>
-            <h1>Lista de juegos</h1>
-        </md-content>
+        <h1>Lista de juegos </h1>
         <hr />
 
         <div class="row">
-            <div class="input-group col-md-6">
-                <input type="text" class="form-control" ng-model="buscador" placeholder="Filtrar nombre">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-info">
-                    <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="input-group col-md-4 btn-block">
+                    <input type="text" class="form-control" ng-model="buscador" placeholder="Filtrar nombre">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-info">
+                        <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
             </div>
 
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Género
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li>RPG</li>
-                    <li>Platforms</li>
-                    <li>Racing</li>
-                </ul>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-default dropdown-toggle btn-block" data-toggle="dropdown">
+                        <span class="selection">Todos los géneros</span><span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Todos los géneros</a></li>
+                        <li><a href="#">RPG</a></li>
+                        <li><a href="#">Plataformas</a></li>
+                        <li><a href="#">Shooter</a></li>
+                        <li><a href="#">Carreras</a></li>
+                    </ul>
+                </div>
             </div>
-            
+            <div class="col-md-3 col-sm-3 col-xs-3">
+                <div class="btn-group btn-block">
+                    <button type="button" class="btn btn-default dropdown-toggle btn-block" data-toggle="dropdown">
+                        <span class="selection">Todas las plataformas</span><span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Todas las plataformas</a></li>
+                        <li><a href="#">GBA</a></li>
+                        <li><a href="#">3DS</a></li>
+                        <li><a href="#">PS4</a></li>
+                        <li><a href="#">PS3</a></li>
+                        <li><a href="#">PS3</a></li>
+                        <li><a href="#">Wii</a></li>
+                        <li><a href="#">Xbox 360</a></li>
+                        <li><a href="#">Nintendo 64</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
+        <hr/>
+
+      <ol ng-repeat="game in games | filter: buscador" style="list-style-type:none">
+        <li>
+          <div class="jumbotron" style="padding-top: 5pt; padding-bottom: 5pt;">
+            <h2>{{game.name}}<h2>
+
+            <hr class="m-y-2"/>
+              <table class="table table-hover" >
+                <tbody>
+                    <tr ng-repeat="(k, v) in game">
+                        <td ng-hide="k == 'name'" class="btn btn-info disabled" style="width: 150pt"> {{k}} </td>
+                        <td ng-hide="k == 'name'" style="width: 100%"> <p>{{v}}</p> </td>
+                    </tr>
+                </tbody>
+              </table>
+          </div>
+        </li>
+      </ol>
     </div>
 </div>
