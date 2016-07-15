@@ -1,8 +1,10 @@
-var UserHomeCtrl = function($scope, LoginService, ToastService, $state) {
+var UserHomeCtrl = function($scope, UserService, LoginService, ToastService, $state) {
     //Mapeo nombres scheme a visibles para el usuario
     $scope.campNames = {"name" : "Nombre",
                         "year": "Año",
                         "platform": "Plataforma",
+                        "platforms": "Plataforma",
+                        "score" : "Valoración",
                         "genre": "Género",
                         "company": "Compañia",
                         "developer": "Desarrollador",
@@ -18,8 +20,27 @@ var UserHomeCtrl = function($scope, LoginService, ToastService, $state) {
     {"name":"Jumbotron" , "campo_vacio" : ""},
     {"name":"Jumbotron Plus", "genre": "awesomness"}];
 
+    $scope.game_list = [];
+    UserService.game_list()
+      .then(
+        function(game_list){
+           game_list.forEach( function (game) {
+              game.name = game.game_id.name;
+              delete game.game_id
+           }
+          )
+           $scope.games = game_list;
+        },
+        function (err) {
+           console.log(err);
+        }
+    );
+      
+    $scope.modify();
+      
+
 
 };
 
 
-angular.module('GameChestApp').controller('UserHomeCtrl', ['$scope', 'LoginService', 'ToastService', '$state', UserHomeCtrl]);
+angular.module('GameChestApp').controller('UserHomeCtrl', ['$scope', 'UserService', 'LoginService', 'ToastService', '$state', UserHomeCtrl]);

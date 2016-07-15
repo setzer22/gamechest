@@ -60,11 +60,11 @@
                       <!--Llista dels atributs-->
                       <ol ng-repeat="(attrib, val) in game" style="list-style-type:none">
                         <li>
-                            <div class='row'>
-                              <div class='col-md-2'>
+                            <div class='row' ng-hide='attrib==="name"'>
+                              <div class='col-md-3'>
                                 <p style="font-size:140%;">{{campNames[attrib]}}<p>
                               </div>
-                              <div class='col-md-10'>
+                              <div class='col-md-9'>
                                 <input type="text" style="font-size:140%;"  class="form-control pull-right" ng-model="game[attrib]" placeholder={{campNames[attrib]}} required/>
                               </div>
                             </div>
