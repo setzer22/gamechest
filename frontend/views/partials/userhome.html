@@ -39,15 +39,16 @@
                 <br><br><br>
               </div> 
               
-              <!--Taula de Cards-->
-              <div class="card">
-  <img class="card-img-top" data-src="..." alt="Card image cap">
-  <div class="card-block">
-    <h4 class="card-title">Card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
-  </div>
-</div>
+              <!--Taula de Mongojumbotron-->
+              <ol ng-repeat="game in games" style="list-style-type:none">
+              <li>
+              <div class="jumbotron">
+                <h1>{{game}}<h1>
+                <p>Es un juego de cosas</p>
+                <p ng-hide="!show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet mauris dui, at rutrum lacus vestibulum at. Aliquam vitae ultrices eros. Ut id venenatis lacus. In tellus sem, tincidunt in malesuada non, dignissim ac risus. Praesent feugiat blandit quam non consectetur. Ut tristique nunc dolor, nec consequat neque consectetur eu. Nam imperdiet augue eget porta sagittis. Proin in lacinia massa. Nulla ac maximus lacus, sit amet pellentesque nulla. Mauris imperdiet massa eu dui consequat porta. Phasellus varius turpis id arcu dictum lobortis. Pellentesque velit ipsum, faucibus non massa feugiat, eleifend luctus magna. Morbi hendrerit, sapien quis aliquet rutrum, sapien arcu tempus turpis, dignissim fermentum quam purus in nisl. Pellentesque mi sem, suscipit tincidunt posuere imperdiet, commodo sed leo. Nulla mollis eleifend laoreet. Fusce vitae feugiat urna. 
+                <p><a class="btn btn-primary btn-lg" ng-click="show = !show" href="#" role="button">Learn more</a></p>
+              </div>
+              <ol>
 
           </fieldset>
         </form>

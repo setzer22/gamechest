@@ -1,5 +1,9 @@
 var LayoutCtrl = function($scope, $state, LoginService, TareasService) {
     
+    $scope.show = false;
+    
+    $scope.games = ["Final Fantasy VI", "Jumbotron", "Jumbotron Plus"];
+  
     $scope.logout = function() {
         LoginService.logout();
         TareasService.reset();
